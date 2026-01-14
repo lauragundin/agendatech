@@ -1,0 +1,45 @@
+name: CSV → JSON (events)
+
+# roda quando houver push na pasta dados (ou manualmente)
+on:
+  push:
+    paths:
+      - 'dados/events.csv'
+  workflow_dispatch:
+
+permissions:
+  contents: write  # necessário para commitar o arquivo gerado
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install deps
+        run: npm install csv-parse
+
+      - name: Run csv-to-json
+        run: node scripts/csv-to-json.js
+
+      - name: Commit generated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/events.json
+          # só commita se houver mudanças
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: atualiza src/data/events.json (automático)"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit"
+          fi
