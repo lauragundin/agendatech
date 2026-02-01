@@ -1,16 +1,17 @@
+// src/app/events/page.tsx
 import Link from "next/link";
 
-export default function EventsIndex() {
+export default function EventsPage() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-12">
       <h1 className="text-2xl font-bold text-white">Eventos</h1>
       <p className="text-slate-400 mt-2">
-        Lista de eventos disponíveis.
+        Veja os eventos disponíveis abaixo.
       </p>
 
       <div className="mt-6">
         <Link href="/" className="text-indigo-400">
-          ← Voltar para o início
+          ← Voltar para a página inicial
         </Link>
       </div>
     </main>
