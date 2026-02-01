@@ -36,21 +36,15 @@ export default function EventPage() {
   if (!event) {
     return (
       <main className="max-w-3xl mx-auto px-6 py-12">
-        <Link href="/" className="text-indigo-400">
-          ← Voltar
-        </Link>
-        <p className="text-slate-400 mt-6">
-          Evento não encontrado.
-        </p>
+        <Link href="/" className="text-indigo-400">← Voltar</Link>
+        <p className="text-slate-400 mt-6">Evento não encontrado.</p>
       </main>
     );
   }
 
   return (
     <main className="max-w-3xl mx-auto px-6 py-12">
-      <Link href="/" className="text-indigo-400">
-        ← Voltar
-      </Link>
+      <Link href="/" className="text-indigo-400">← Voltar</Link>
 
       <h1 className="text-3xl font-bold mt-4 text-white">
         {event.title}
@@ -61,15 +55,11 @@ export default function EventPage() {
       </p>
 
       {event.location && (
-        <p className="text-slate-300 mt-2">
-          {event.location}
-        </p>
+        <p className="text-slate-300 mt-2">{event.location}</p>
       )}
 
       {event.summary && (
-        <p className="text-slate-300 mt-4">
-          {event.summary}
-        </p>
+        <p className="text-slate-300 mt-4">{event.summary}</p>
       )}
 
       {event.signup_link && (

@@ -6,7 +6,7 @@ export default function EventsPage() {
     <main className="max-w-5xl mx-auto px-6 py-12">
       <h1 className="text-2xl font-bold text-white">Eventos</h1>
       <p className="text-slate-400 mt-2">
-        Veja os eventos disponíveis abaixo.
+        Navegue pelos eventos disponíveis.
       </p>
 
       <div className="mt-6">
