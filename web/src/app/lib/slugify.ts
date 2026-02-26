@@ -1,5 +1,5 @@
 // src/app/lib/slugify.ts
-export default function slugify(text: string) {
+export function slugify(text: string) {
   if (!text) return "";
   return String(text)
     .normalize("NFKD") // normaliza acentos

@@ -1,7 +1,7 @@
 // src/app/events/[slug]/page.tsx
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import slugify from "../../lib/slugify";
+import { slugify } from "../../lib/slugify";
 import events from "../../data/events.json";
 
 type Event = {
@@ -42,11 +42,13 @@ export default function EventPage({
         <p className="text-slate-300 mt-2">{event!.location}</p>
       )}
 
-      {event!.summary && <p className="text-slate-300 mt-4">{event!.summary}</p>}
+      {event!.summary && (
+        <p className="text-slate-300 mt-4">{event!.summary}</p>
+      )}
 
       <div className="mt-6">
         {event!.signup_link && (
-          
+          <a
             href={event!.signup_link}
             target="_blank"
             rel="noopener noreferrer"
@@ -55,7 +57,9 @@ export default function EventPage({
             Ver página oficial
           </a>
         )}
-        {event!.source && <span className="text-slate-400">Fonte: {event!.source}</span>}
+        {event!.source && (
+          <span className="text-slate-400">Fonte: {event!.source}</span>
+        )}
       </div>
     </main>
   );
