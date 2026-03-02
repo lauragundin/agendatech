@@ -85,8 +85,7 @@ export default function Header() {
               maxWidth: "520px",
               margin: 0,
             }}>
-              Conectando você às melhores oportunidades — meetups, workshops e networking
-              para quem está começando ou crescendo na área de tecnologia.
+              Seu hub de meetups, workshops e networking — tudo gratuito, tudo em São Paulo. Para quem está entrando na tech ou levando a carreira para o próximo nível.
             </p>
             <div>
               <a href="#events" className="btn-primary">
