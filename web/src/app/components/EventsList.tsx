@@ -1,44 +1,51 @@
-// web/src/app/components/EventsList.tsx
-import React from "react";
+"use client";
+
 import EventCard from "./EventCard";
+import data from "../data/events.json";
 
-type Event = {
-  id: string;
-  title: string;
-  date: string; // ISO string
-  description: string;
-  link: string;
-  status?: string;
-};
+function formatDate(dateStr: string) {
+  try {
+    const d = new Date(dateStr + "T00:00:00");
+    return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" });
+  } catch {
+    return dateStr;
+  }
+}
 
-// exemplo com date em ISO — evita "Invalid Date"
-const sampleEvents: Event[] = [
-  {
-    id: "1",
-    title: "Meetup Dev SP",
-    date: "2026-03-20T19:00:00", // ISO (recomendo manter assim quando vier do backend)
-    description: "Meetup gratuito para devs iniciantes",
-    link: "#",
-    status: "Em breve",
-  },
-];
+function isUpcoming(dateStr: string) {
+  try {
+    const d = new Date(dateStr + "T23:59:59");
+    return d >= new Date();
+  } catch { return true; }
+}
 
 export default function EventsList() {
+  const events = data.events || [];
+
   return (
-    <div className="mt-4">
-      <div className="mb-6 max-w-lg">
-        <input
-          className="input-field"
-          placeholder="Buscar por título ou resumo..."
-          aria-label="Buscar eventos"
-        />
+    <section>
+      <h2 className="text-2xl font-bold mb-4">Próximos eventos</h2>
+      <p className="text-sm text-gray-400 mb-6">{events.length} evento encontrado</p>
+
+      <div className="mb-6">
+        <input className="input-field" placeholder="Buscar por título ou resumo..." />
       </div>
 
       <div className="space-y-6">
-        {sampleEvents.map((ev) => (
-          <EventCard key={ev.id} event={ev} />
+        {events.map((ev) => (
+          <EventCard
+            key={ev.id}
+            event={{
+              id: ev.id,
+              title: ev.title,
+              date: formatDate(ev.date),
+              description: ev.description,
+              link: ev.link,
+              status: isUpcoming(ev.date) ? "Em breve" : "Passado",
+            }}
+          />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
