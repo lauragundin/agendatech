@@ -73,7 +73,8 @@ export default function Header() {
                   marginTop: "0.25rem",
                   letterSpacing: "-0.01em",
                 }}>
-                  Conectando você às oportunidades Tech de São Paulo
+                  Conectando você às oportunidades 
+                  Tech de São Paulo
                 </p>
               </div>
             </div>
