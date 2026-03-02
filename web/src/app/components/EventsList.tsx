@@ -2,11 +2,21 @@
 import React from "react";
 import EventCard from "./EventCard";
 
-const sampleEvents = [
+type Event = {
+  id: string;
+  title: string;
+  date: string; // ISO string
+  description: string;
+  link: string;
+  status?: string;
+};
+
+// exemplo com date em ISO — evita "Invalid Date"
+const sampleEvents: Event[] = [
   {
     id: "1",
     title: "Meetup Dev SP",
-    date: "20 de mar. de 2026 • 19:00",
+    date: "2026-03-20T19:00:00", // ISO (recomendo manter assim quando vier do backend)
     description: "Meetup gratuito para devs iniciantes",
     link: "#",
     status: "Em breve",
@@ -17,7 +27,11 @@ export default function EventsList() {
   return (
     <div className="mt-4">
       <div className="mb-6 max-w-lg">
-        <input className="input-field" placeholder="Buscar por título ou resumo..." />
+        <input
+          className="input-field"
+          placeholder="Buscar por título ou resumo..."
+          aria-label="Buscar eventos"
+        />
       </div>
 
       <div className="space-y-6">
