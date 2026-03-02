@@ -1,52 +1,112 @@
-// web/src/app/components/Header.tsx
 "use client";
-
-import React from "react";
 
 export default function Header() {
   return (
-    <header className="relative overflow-hidden">
-      {/* fundos decorativos (mantidos se quiser) */}
-      <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-[600px] h-[300px] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(108,99,255,0.18),_transparent_60%)]" />
+    <header style={{ position: "relative", overflow: "hidden" }}>
+      {/* Decorative glowing orbs */}
+      <div style={{
+        position: "absolute", top: "-60px", left: "50%", transform: "translateX(-50%)",
+        width: "600px", height: "300px",
+        background: "radial-gradient(ellipse, rgba(108, 99, 255, 0.2) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
+      <div style={{
+        position: "absolute", bottom: 0, right: "-100px",
+        width: "400px", height: "200px",
+        background: "radial-gradient(ellipse, rgba(67, 233, 123, 0.07) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
 
-      <div className="max-w-6xl mx-auto px-6 py-12 lg:py-16">
-        {/* HERO: usar grid para evitar que imagem "quebre" o layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-          {/* Ícone / imagem no canto esquerdo, com largura máxima fixa */}
-          <div className="col-span-3 flex justify-start lg:justify-start">
-            <img
-              src="/logo.png"
-              alt="Ícone agenda"
-              className="hero-logo object-contain w-36 h-36 lg:w-20 lg:h-20"
-            />
+      <div style={{
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        padding: "3rem 1.5rem 3.5rem",
+        position: "relative",
+        zIndex: 1,
+      }}>
+        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+          {/* Top bar — só badge SP */}
+          <div style={{ marginBottom: "2.5rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <span style={{
+                width: "8px", height: "8px", borderRadius: "50%",
+                background: "var(--accent3)",
+                boxShadow: "0 0 8px rgba(67, 233, 123, 0.6)",
+                display: "inline-block",
+                animation: "pulse 2s ease-in-out infinite",
+              }} />
+              <span style={{ fontSize: "0.78rem", color: "var(--muted)", fontWeight: 500, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                São Paulo • Gratuito
+              </span>
+            </div>
           </div>
 
-          {/* Conteúdo textual: ocupa o resto das colunas */}
-          <div className="col-span-9">
-            <div className="text-sm text-green-300">SÃO PAULO • GRATUITO</div>
-
-            <h1 className="mt-2 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-              AgendaTech
-            </h1>
-
-            <div className="mt-2 text-lg text-gray-300 max-w-3xl">
-              Eventos tech gratuitos em SP
+          {/* Hero content */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem", maxWidth: "680px" }}>
+            {/* Logo + Título */}
+            <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flexWrap: "wrap" }}>
+              <img
+                src="/logo.png"
+                alt="AgendaTech logo"
+                style={{
+                  height: "72px",
+                  width: "auto",
+                  objectFit: "contain",
+                  filter: "drop-shadow(0 0 16px rgba(108, 99, 255, 0.35))",
+                }}
+              />
+              <div>
+                <h1 style={{
+                  fontFamily: "var(--font-display, 'Syne', sans-serif)",
+                  fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                  fontWeight: 800,
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.02em",
+                  margin: 0,
+                }}>
+                  <span className="shimmer-text">AgendaTech</span>
+                </h1>
+                <p style={{
+                  fontFamily: "var(--font-display, 'Syne', sans-serif)",
+                  fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
+                  fontWeight: 600,
+                  color: "rgba(240, 240, 248, 0.6)",
+                  marginTop: "0.25rem",
+                  letterSpacing: "-0.01em",
+                }}>
+                  Eventos tech gratuitos em SP
+                </p>
+              </div>
             </div>
 
-            <p className="mt-6 text-sm text-gray-400 max-w-2xl">
-              Seu hub de meetups, workshops e networking — tudo gratuito, tudo em
-              São Paulo. Para quem está entrando na tech ou levando a carreira
-              para o próximo nível.
+            <p style={{
+              fontSize: "1rem",
+              color: "var(--muted)",
+              lineHeight: 1.7,
+              maxWidth: "520px",
+              margin: 0,
+            }}>
+              Seu hub de meetups, workshops e networking — tudo gratuito, tudo em São Paulo. Para quem está entrando na tech ou levando a carreira para o próximo nível.
             </p>
-
-            <div className="mt-6">
-              <a href="#events" className="btn-primary" aria-label="Ver eventos">
+            <div>
+              <a href="#events" className="btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
                 Ver eventos
               </a>
             </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
     </header>
   );
 }

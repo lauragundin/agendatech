@@ -1,10 +1,9 @@
-// src/app/layout.tsx
+import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata = {
-  title: "AgendaTech",
-  description:
-    "Conectando você às oportunidades tech — eventos gratuitos de tecnologia, carreira e networking em São Paulo.",
+export const metadata: Metadata = {
+  title: "AgendaTech — Eventos Tech em SP",
+  description: "Conectando você às oportunidades tech — eventos gratuitos de tecnologia, carreira e networking em São Paulo.",
 };
 
 export default function RootLayout({

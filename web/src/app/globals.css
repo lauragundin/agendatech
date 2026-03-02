@@ -1,11 +1,5 @@
-/* web/src/app/globals.css */
-
-/* 1) Fonte (IMPORT deve vir primeiro) */
+@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
   --bg: #07080f;
@@ -22,17 +16,14 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; }
+
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
-}
-
-/* visual */
-body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
   background-image:
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(108, 99, 255, 0.15), transparent),
     radial-gradient(ellipse 50% 30% at 80% 80%, rgba(67, 233, 123, 0.05), transparent);
@@ -102,7 +93,7 @@ body::before {
   gap: 0.375rem;
   text-decoration: none;
 }
-.btn-primary:hover { opacity: 0.95; transform: translateY(-1px); }
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
 
 .btn-ghost {
   border: 1px solid var(--border);
@@ -132,7 +123,7 @@ body::before {
   width: 100%;
 }
 .input-field::placeholder { color: var(--muted); }
-.input-field:focus { border-color: rgba(108, 99, 255, 0.5); box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.08); }
+.input-field:focus { border-color: rgba(108, 99, 255, 0.5); box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1); }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
