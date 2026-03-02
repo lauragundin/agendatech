@@ -1,6 +1,14 @@
-@import "tailwindcss";
+/* web/src/app/globals.css */
+
+/* 1) Fonte (IMPORT deve vir primeiro) */
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
 
+/* 2) Tailwind (se o seu projeto usa Tailwind, mantenha estas diretivas) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3) Variáveis (única seção :root consolidada) */
 :root {
   --bg: #07080f;
   --surface: #0e1018;
@@ -15,15 +23,19 @@
   --font-body: "DM Sans", sans-serif;
 }
 
+/* 4) Reset / básicos */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+}
+
+/* 5) Fundo com gradientes e noise (visual premium) */
+body {
   background-image:
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(108, 99, 255, 0.15), transparent),
     radial-gradient(ellipse 50% 30% at 80% 80%, rgba(67, 233, 123, 0.05), transparent);
@@ -39,6 +51,7 @@ body::before {
   opacity: 0.4;
 }
 
+/* 6) Animações e utilitários custom */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -59,6 +72,7 @@ body::before {
   animation: shimmer 4s linear infinite;
 }
 
+/* 7) Component styles (cards, botões, inputs) */
 .event-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -77,7 +91,11 @@ body::before {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.event-card:hover { transform: translateY(-3px); border-color: rgba(108, 99, 255, 0.3); box-shadow: 0 8px 40px rgba(108, 99, 255, 0.12); }
+.event-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(108, 99, 255, 0.3);
+  box-shadow: 0 8px 40px rgba(108, 99, 255, 0.12);
+}
 .event-card:hover::before { opacity: 1; }
 
 .btn-primary {
@@ -93,7 +111,7 @@ body::before {
   gap: 0.375rem;
   text-decoration: none;
 }
-.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-primary:hover { opacity: 0.95; transform: translateY(-1px); }
 
 .btn-ghost {
   border: 1px solid var(--border);
@@ -123,8 +141,9 @@ body::before {
   width: 100%;
 }
 .input-field::placeholder { color: var(--muted); }
-.input-field:focus { border-color: rgba(108, 99, 255, 0.5); box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1); }
+.input-field:focus { border-color: rgba(108, 99, 255, 0.5); box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.08); }
 
+/* 8) Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: rgba(108, 99, 255, 0.3); border-radius: 3px; }
