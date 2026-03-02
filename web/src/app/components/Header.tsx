@@ -73,7 +73,7 @@ export default function Header() {
                   marginTop: "0.25rem",
                   letterSpacing: "-0.01em",
                 }}>
-                  Eventos tech gratuitos em SP
+                  Conectando você às oportunidades Tech de São Paulo
                 </p>
               </div>
             </div>
