@@ -5,24 +5,66 @@ export default function Home() {
   return (
     <div className="page-wrapper">
       <Header />
-      <main id="events" style={{ maxWidth: "1200px", margin: "0 auto", padding: "3.5rem 2rem 6rem" }}>
+
+      {/* EVENTOS — aparece primeiro na rolagem, antes de "Sobre" */}
+      <main id="events" style={{ maxWidth: "1200px", margin: "0 auto", padding: "3.5rem 2rem 5rem" }}>
         <EventsList />
       </main>
-      <footer style={{ borderTop: "1px solid var(--border)", padding: "2rem", textAlign: "center" }}>
+
+      {/* SOBRE — seção "Por que usar", aparece depois dos eventos */}
+      <section id="sobre" style={{ borderTop: "1px solid var(--border)" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "4.5rem 2rem" }}>
+          <p style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted2)", marginBottom: "0.75rem" }}>
+            Por que usar
+          </p>
+          <h2 style={{ fontFamily: "Syne, sans-serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "2.5rem", color: "var(--text)" }}>
+            A agenda certa para quem trabalha com tech
+          </h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
+            {[
+              {
+                icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>,
+                title: "Curado com critério",
+                desc: "Só eventos relevantes, gratuitos e verificados. Sem spam, sem paywall.",
+              },
+              {
+                icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"><polyline points="23,4 23,10 17,10"/><polyline points="1,20 1,14 7,14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>,
+                title: "Sempre atualizado",
+                desc: "A agenda é atualizada frequentemente para você não perder nada importante.",
+              },
+              {
+                icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+                title: "Networking real",
+                desc: "Meetups presenciais em SP para você conhecer pessoas da área de verdade.",
+              },
+              {
+                icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>,
+                title: "Todos os níveis",
+                desc: "Do iniciante ao sênior — eventos para cada momento da sua carreira tech.",
+              },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "14px", padding: "1.5rem", transition: "border-color 0.2s, transform 0.2s" }}>
+                <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: "var(--accent-soft)", color: "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1rem" }}>
+                  {icon}
+                </div>
+                <h3 style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "0.95rem", color: "var(--text)", marginBottom: "0.4rem" }}>{title}</h3>
+                <p style={{ fontSize: "0.82rem", color: "var(--muted)", lineHeight: 1.6 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER — sem ícone/link do GitHub */}
+      <footer style={{ borderTop: "1px solid var(--border)", padding: "1.75rem 2rem" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-            <img src="/logo.png" alt="" style={{ height: "24px", mixBlendMode: "multiply", filter: "saturate(1.1)" }} />
+            <img src="/logo.png" alt="" style={{ height: "22px", objectFit: "contain" }} />
             <span style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "0.88rem", color: "var(--muted)" }}>AgendaTech</span>
           </div>
           <p style={{ fontSize: "0.78rem", color: "var(--muted2)" }}>
-            Feito para a comunidade tech de SP · Gratuito para sempre
+            Feito para a comunidade tech de SP
           </p>
-          <a href="https://github.com/lauragundin/agendatech" target="_blank" rel="noreferrer" style={{ fontSize: "0.78rem", color: "var(--muted2)", textDecoration: "none", display: "flex", alignItems: "center", gap: "0.35rem" }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-            </svg>
-            GitHub
-          </a>
         </div>
       </footer>
     </div>
