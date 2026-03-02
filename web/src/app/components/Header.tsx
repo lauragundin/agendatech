@@ -73,7 +73,7 @@ export default function Header() {
                   marginTop: "0.25rem",
                   letterSpacing: "-0.01em",
                 }}>
-                  Conectando você a eventos tech
+                Conectando você a eventos tech
                 </p>
               </div>
             </div>
