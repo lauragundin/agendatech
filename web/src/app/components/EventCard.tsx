@@ -1,17 +1,19 @@
 // web/src/app/components/EventCard.tsx
+"use client";
+
 import React from "react";
 
 type Event = {
   id: string;
   title: string;
-  date: string; // ISO string (ex: "2026-03-20T19:00:00")
+  date: string; // ISO string or already formatted string
   description: string;
   link: string;
   status?: string;
 };
 
 export default function EventCard({ event }: { event: Event }) {
-  // tenta formatar a data; se falhar, exibe a string original
+  // tenta formatar a data (se for ISO). Se não for, usa como veio.
   let formattedDate = event.date;
   try {
     const d = new Date(event.date);
@@ -25,7 +27,7 @@ export default function EventCard({ event }: { event: Event }) {
       });
     }
   } catch {
-    // mantém event.date como fallback
+    // fallback: mantém event.date
   }
 
   return (
