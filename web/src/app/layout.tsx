@@ -5,8 +5,8 @@ const BASE_URL = "https://agendatech-six.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: "AgendaTech — Eventos Tech gratuitos em São Paulo",
-  description: "Meetups, workshops e networking para quem está construindo uma carreira na tech. Eventos gratuitos em São Paulo, sempre atualizados.",
+  title: "AgendaTech — Eventos Tech gratuitos em São Paulo, SP",
+  description: "Seu hub de meetups, workshops e networking para quem está construindo uma carreira na tech. Eventos 100% gratuitos em São Paulo, sempre atualizados e curados para todos os níveis.",
   keywords: ["eventos tech", "meetup sp", "tecnologia são paulo", "eventos gratuitos", "networking tech", "carreira tech"],
   authors: [{ name: "AgendaTech" }],
 
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     type: "website",
     url: BASE_URL,
     siteName: "AgendaTech",
-    title: "AgendaTech — Eventos Tech gratuitos em São Paulo",
-    description: "Meetups, workshops e networking para quem está construindo uma carreira na tech.",
+    title: "AgendaTech — Eventos Tech gratuitos em São Paulo, SP",
+    description: "Seu hub de meetups, workshops e networking para quem está construindo uma carreira na tech. Eventos 100% gratuitos em São Paulo, sempre atualizados e curados para todos os níveis.",
     images: [
       {
         url: "/og-image.png",
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   // Twitter / X
   twitter: {
     card: "summary_large_image",
-    title: "AgendaTech — Eventos Tech gratuitos em SP",
-    description: "Meetups, workshops e networking para quem está construindo uma carreira na tech.",
+    title: "AgendaTech — Eventos Tech gratuitos em São Paulo, SP",
+    description: "Seu hub de meetups, workshops e networking para quem está construindo uma carreira na tech. Eventos 100% gratuitos em SP.",
     images: ["/og-image.png"],
   },
 
